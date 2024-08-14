@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "./actionTypes"
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, MARK_COMPLETED,MARK_INCOMPLETE, FILTER_TODOS, UPDATA_SERACH_TERM, MARK_ALL_COMPLETED } from "./actionTypes"
 const initialState = {
   todos: [],
   filter: "ALL",
@@ -10,7 +10,7 @@ const todoReducer = (state = initialState, action) => {
     case ADD_TODO:
       return {
         todos: [...state.todos, {text: action.payload.text, complete:false}],
-        filter: state.filer,
+        filter: state.filter,
         searchTerm: state.searchTerm 
       }
     case TOGGLE_TODO:
@@ -18,10 +18,48 @@ const todoReducer = (state = initialState, action) => {
         todos: state.todos.map((todo, index) => 
         index === action.payload.id ? {... todo, completed: !todo.completed} : todo),
       } 
-
+    case REMOVE_TODO:
+      return {
+        todos: state.todos.filter((todo, index) =>
+        index !== action.payload.id),
+        filter: state.filter,
+        searchTerm: state.searchTerm
+      }
+    case MARK_COMPLETED:
+        return{
+          todos: state.todos.map((todo, index) =>
+          index === action.payload.id ? {...todo, comleted: true} : todo),
+          filter: state.filter,
+          searchTerm: state.searchTerm
+      }
+    case MARK_INCOMPLETE:
+        return{
+          todos: state.todos.map((todo, index)=>
+          index === action.payload.id ? {... todo, completed: false} : todo),
+          filter: state.filter,
+          searchTerm: state.searchTerm
+        }
+    case FILTER_TODOS:
+        return{
+          todos: state.todos,
+          filter: action.payload.filter,
+          searchTerm: state.searchTerm
+        }    
+    case UPDATA_SERACH_TERM:
+        return{
+          todos: state.todos,
+          filter: action.filter,
+          searchTerm: state.payload.searchTerm
+        }
+    case MARK_ALL_COMPLETED:
+        return{
+          todos: state.todos.map((todo) => ({...todo, completed:true})),
+          filter: action.filter,
+          searchTerm: state.searchTerm
+        }    
+    
     default:
-      break;
-     
+      return state;  
    }
 }
 
