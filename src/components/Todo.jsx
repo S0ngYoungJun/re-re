@@ -2,6 +2,8 @@ import {useState} from "react"
 import { BsPlus, BsSearch } from "react-icons/bs"
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/action";
+import FilterButton from "./FilterButton";
+import TodoList from "./TodoList";
 
 const Todo = () => {
   const dispatch = useDispatch()
@@ -23,7 +25,7 @@ const Todo = () => {
     dispatch()
   }
   return (
-    <div className="max-w-2xl mx-auto sm:mt-8 p-4 bg-slate-600 rounded">
+    <div className="max-w-2xl mx-auto sm:mt-8 p-4 bg-slate-200 rounded">
       <h2 className="mt-3 mb-6 text-2xl font-bold text-center uppercase">할일 관리</h2>
       <div className="flex items-center mb-4">
          <input value={newTodoText} onChange= {(e) => setNewTodoText(e.target.value)} type="text" name="addTodoInput" id="addTodoInput" placeholder="Add Todo"
@@ -32,7 +34,8 @@ const Todo = () => {
          focus:outline-none" onClick={handleAddToDoClick}><BsPlus/></button> 
       </div> 
       
-      <div>
+      <div className="flex items-center justify-between">
+          <FilterButton/>
          <div className="flex items-center mb-4">
           <input value={searchTerm} onChange={(e) => handleSearchChange(e.target.value)} type="text"
           name="addTodoInput" id="addTodoInput" placeholder="Add Todo" className="flex-grow p-2 border-b-2
@@ -41,6 +44,7 @@ const Todo = () => {
          <button className="ml-4 p-2 bg-blue-300 text-white rounded hover:bg-blue-950
          focus:outline-none"><BsSearch/></button>
       </div>
+      <TodoList></TodoList>
     </div>
   )
 }
