@@ -20,7 +20,7 @@ const TodoList = () => {
       <li className="my-2 text-sm lialic">
       </li>
       {
-        filteredTodos.map((todo, index) => (
+        filteredTodos.map((todo,index) => (
           <TodoItem key={index} todo={todo} index={index}/>
         ))
       }

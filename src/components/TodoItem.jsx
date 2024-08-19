@@ -1,6 +1,7 @@
 import { FaCheck, FaTimes, FaToggleOff, FaToggleOn, FaTrash} from "react-icons/fa"
 import { useDispatch } from "react-redux"
 import { markCompleted, markIncomplete, removeTodo, toggleTodo } from "../redux/action.js"
+
 export const TodoItem = ({todo, index}) =>{
   const dispatch = useDispatch()
   return(
