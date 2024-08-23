@@ -49,7 +49,7 @@ const todoReducer = (state = initialState, action) => {
         return{
           todos: state.todos,
           filter: action.filter,
-          searchTerm: state.payload.searchTerm
+          searchTerm: action.payload.searchTerm
         }
     case MARK_ALL_COMPLETED:
         return{
