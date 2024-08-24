@@ -7,8 +7,8 @@ const TodoList = () => {
     const searchTerm = state.searchTerm;
 
     return todos.filter((todo)=> {
-      const matchsFilter = (filter === "COMPLETED" && todo.completed) || (filter === "INCOMPLETE" && !todo.completed) || (filter
-        ==="ALL");
+      const matchsFilter = (filter === "COMPLETED" && todo.completed) || (filter === "INCOMPLETE" && !todo.completed) || filter
+        ==="ALL";
       
       const matchsSearch = todo.text.toLowerCase().includes(searchTerm);
       

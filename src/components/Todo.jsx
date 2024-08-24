@@ -24,6 +24,7 @@ const Todo = () => {
     setSearchTerm(value);
     dispatch(updateSearchTerm(value)); // Redux 상태에 searchTerm 업데이트
   };
+  
   return (
     <div className="max-w-2xl mx-auto sm:mt-8 p-4 bg-slate-200 rounded">
       <h2 className="mt-3 mb-6 text-2xl font-bold text-center uppercase">할일 관리</h2>
